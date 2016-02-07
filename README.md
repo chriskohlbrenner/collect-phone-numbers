@@ -20,3 +20,9 @@ This project uses:
 * a simple regex to parse text for patterns of ### ### #### separated by dashes, periods, or spaces, and accounting for parens around area code.
 * Node's filesystem for `readdir`, `readFfile`, and `writeFile`.
 * the [async](https://github.com/caolan/async) utilities for a synchronized `forEach` callback (write file when done asynchronously iterating through all files in directory).
+
+##Future Improvements##
+
+This project's roadmap includes:
+* tests (coming soon)
+* improved regex (7-digit phone numbers, different breaks, etc.)
