@@ -1,6 +1,6 @@
 {
   "name": "collect-phone-numbers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pull all phone numbers from a directory of text files",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "phone",
     "numbers"
   ],
-  "author": "",
+  "author": "Chris Eaves-Kohlbrenner",
   "license": "ISC",
   "dependencies": {
     "async": "^1.5.2"
