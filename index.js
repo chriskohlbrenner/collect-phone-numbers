@@ -1,4 +1,3 @@
-require('locus')
 var fs = require('fs')
 var async = require('async')
 
@@ -21,7 +20,6 @@ module.exports = collectPhoneNumbers = function() {
         if (data) {
           var matches = data.match(regex)
           if (matches) {
-            eval(locus)
             console.log("Phone numbers found in " + file + ": " + matches)
             numbers = numbers.concat(matches)
           }
