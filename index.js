@@ -1,12 +1,20 @@
+require('locus')
 var fs = require('fs')
 var async = require('async')
-
+var path = require('path')
 
 module.exports = collectPhoneNumbers = function() {
-  var regex = /((\(\d{3}\)|\d{3})(-|\.|\s)\d{3}(-|\.|\s)\d{4}|\d{10})/g
+  // REGEX EXPLANATION
+  // non-numeric chars between segments       [-. (]*, [-. )]*, and [-. ]*
+  // optional country code                    (?:\+?(\d{1,3}))?
+  // required area code                       (\d{3})
+  // required first three digits              (\d{3})
+  // required last four digits                (\d{4})
+  // optional extension                       (?: *x(\d+))?
+  var regex = /(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?/g
   
-  var inputDirectory = process.argv[2]
-  var outputFile = process.argv[3]
+  var inputDirectory = path.resolve(process.cwd(), (process.argv[2] || ""))
+  var outputFile = path.resolve(process.cwd(), (process.argv[3] || "phone-numbers.csv"))
 
   fs.readdir(inputDirectory, function (err, list) {
     var numbers = []
