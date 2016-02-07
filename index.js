@@ -2,17 +2,9 @@ require('locus')
 var fs = require('fs')
 var async = require('async')
 var path = require('path')
+var regex = require('./regex')
 
 module.exports = collectPhoneNumbers = function() {
-  // REGEX EXPLANATION
-  // non-numeric chars between segments       [-. (]*, [-. )]*, and [-. ]*
-  // optional country code                    (?:\+?(\d{1,3}))?
-  // required area code                       (\d{3})
-  // required first three digits              (\d{3})
-  // required last four digits                (\d{4})
-  // optional extension                       (?: *x(\d+))?
-  var regex = /(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?/g
-  
   var inputDirectory = path.resolve(process.cwd(), (process.argv[2] || ""))
   var outputFile = path.resolve(process.cwd(), (process.argv[3] || "phone-numbers.csv"))
 
