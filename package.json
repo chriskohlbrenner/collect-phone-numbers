@@ -13,6 +13,10 @@
     "phone",
     "numbers"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chriskohlbrenner/collect-phone-numbers.git"
+  },
   "author": "Chris Eaves-Kohlbrenner",
   "license": "ISC",
   "dependencies": {
