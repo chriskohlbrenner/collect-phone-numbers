@@ -1,4 +1,3 @@
-require('locus')
 var fs = require('fs')
 var async = require('async')
 var path = require('path')
@@ -11,6 +10,7 @@ module.exports = collectPhoneNumbers = function() {
   fs.readdir(inputDirectory, function (err, list) {
     var numbers = []
     async.forEach(list, function (file, callback) {
+      // to do: extract into own function without breaking closure over `numbers`
       fs.readFile(inputDirectory + "/" + file, 'utf8', function (err, data) {
         if (data) {
           var matches = data.match(regex)
@@ -22,14 +22,19 @@ module.exports = collectPhoneNumbers = function() {
         callback()
       })
     }, function(err) {
-      if (numbers.length === 0) {
-        console.log("No phone numbers found.")
-      } else {
-        fs.writeFile(outputFile, numbers.join(",\n"), function(err) {
-          if (err) throw err;
-          console.log("Saved phone numbers in " + outputFile)
-        })
-      }
+      writeNumbersToFile(numbers, outputFile)
     })
   })
+}
+
+
+function writeNumbersToFile (numbers, file) {
+  if (numbers.length === 0) {
+    console.log("No phone numbers found.")
+  } else {
+    fs.writeFile(file, numbers.join(",\n"), function(err) {
+      if (err) throw err
+      console.log("Saved phone numbers in " + file)
+    })
+  }
 }

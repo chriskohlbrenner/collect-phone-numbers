@@ -1,8 +1,6 @@
-require('locus')
 var assert = require('assert')
 var regex = require('./regex')
 
-// eval(locus)
 assert.equal("123 456 7890".match(regex).length, 1)
 assert.equal("987-023-1234".match(regex).length, 1)
 assert.equal("(878) 143-3456".match(regex).length, 1)
