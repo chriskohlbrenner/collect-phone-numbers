@@ -1,10 +1,14 @@
 # collect-phone-numbers
 
-**This project is experiemental and in progress!**
+Given a directory of files (text or otherwise), `collect-phone-numbers` will parse each file in the directory, extract phone numbers, and write comma-separated values to a new file.
 
 ##Installation
 
 `npm install -g collect-phone-numbers`
+
+##Tests
+
+`npm run test`
 
 
 ##Usage
