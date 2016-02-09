@@ -2,6 +2,10 @@
 
 Given a directory of files (text or otherwise), `collect-phone-numbers` will parse each file in the directory, extract phone numbers, and write comma-separated values to a new file.
 
+**Note**: this is something that's probably best accomplished using grep (or AWK or some other command line utility).
+
+`egrep "\b[[:digit:]]{3}(-|\s|.)?[[:digit:]]{3}(-|\s|.)?[[:digit:]]{4}\b" ./* > ./nums.txt`
+
 ##Installation
 
 `npm install collect-phone-numbers`
